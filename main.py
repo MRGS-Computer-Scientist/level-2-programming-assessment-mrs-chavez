@@ -1,7 +1,5 @@
-from tkinter import *
+from App import *
 
-window = Tk()
-window.geometry("300x300")
-window.title("My App")
-
-window.mainloop()
+if __name__ == "__main__":
+    app = App()
+    
