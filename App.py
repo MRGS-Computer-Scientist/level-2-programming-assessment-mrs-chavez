@@ -1,6 +1,7 @@
 from tkinter import *
 from app_settings import *
 from os import *
+from tkinter import messagebox 
 
 class App():
 
@@ -22,7 +23,7 @@ class App():
         self.home_button = Button(self.bottom_frame, text="Home", height=2, width=5, bg='green')
         self.home_button.place(x=0,y=0)
 
-        self.exit_button = Button(self.bottom_frame, text="Exit", height=2, width=5, bg='green', command=exit)
+        self.exit_button = Button(self.bottom_frame, text="Exit", height=2, width=5, bg='green', command= .exit)
         self.exit_button.place(x=100,y=0)
 
         self.dirname = path.dirname(__file__)
@@ -32,6 +33,5 @@ class App():
 
         self.window.mainloop()
 
-
     def exit(self):
-        self.window.destroy()
+        messagebox.askquestion("askquestion", "Are you sure?") 
