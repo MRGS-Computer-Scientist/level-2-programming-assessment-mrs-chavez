@@ -3,6 +3,8 @@ from app_settings import *
 from os import *
 from tkinter import messagebox 
 
+from PIL import ImageTk, Image
+
 
 ##### FONTS #######
 # Available TKinter fonts: https://stackoverflow.com/a/64301819
@@ -31,8 +33,15 @@ class App():
 
 ########## MAIN FRAME #############
 
+        image = Image.open("imgs/house.png")
+        photo = ImageTk.PhotoImage(image.resize((196, 196)))
+
         self.main_frame = Frame(background=bg_color, width=w_width, height=(w_height-200))
         self.main_frame.pack()
+
+        bg_image = Label(image=photo)
+        bg_image.pack()
+
 
 ########## END OF MAIN #############
 
