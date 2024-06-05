@@ -2,6 +2,7 @@ from tkinter import *
 from app_settings import *
 from os import *
 from tkinter import messagebox 
+from tkinter import simpledialog
 
 from PIL import ImageTk, Image
 
@@ -14,6 +15,7 @@ title_font = ("Verdana", 30, "bold")
 class App():
 
     current_frame = "Home"
+    list_box = None
 
     def __init__(self):
         self.window = Tk()
@@ -45,10 +47,22 @@ class App():
         self.quiz_label = Label(self.quiz_frame, text="Quiz", font=title_font)
         self.quiz_label.pack()
 
+######## LIST FRAME ############
+
         self.list_frame = Frame(background=bg_color, width=w_width, height=(w_height-200))
 
         self.list_label = Label(self.list_frame, text="List", font=title_font)
         self.list_label.pack()
+
+        self.list_box = Listbox(self.list_frame)
+        self.list_box.pack()
+
+
+        self.new_item = Button(self.list_frame, text="Add new item", command=self.add_new_item)
+        self.new_item.pack()
+        
+
+######## END OF LIST FRAME ############
 
         bg_image = Label(self.home_frame, image=photo)
         bg_image.pack()
@@ -97,6 +111,11 @@ class App():
         else:
             print("Continue")
             pass
+
+    def add_new_item(self):
+        user_input = simpledialog.askstring(title="Adding new item",
+                                  prompt="What is your new item name:")
+        self.list_box.insert(0, user_input)
 
     def go_to_frame(self, next_frame):
 
